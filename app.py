@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from google import genai
 from google.genai import types
 from prompts import SYSTEM_PROMPT, WELCOME_MESSAGE_TEMPLATE, SUMMARY_REQUEST_PROMPT
@@ -10,10 +11,11 @@ MODEL_NAME = "gemini-2.5-flash"
 st.set_page_config(page_title="ReceiptSnap - AI Bill Splitter", page_icon="🧾", layout="wide")
 
 # Read Secrets safely from Streamlit secrets
-GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "")
-GMAIL_ADDRESS = st.secrets.get("GMAIL_ADDRESS", "")
-GMAIL_APP_PASSWORD = st.secrets.get("GMAIL_APP_PASSWORD", "")
-TELEGRAM_BOT_TOKEN = st.secrets.get("TELEGRAM_BOT_TOKEN", "")
+# Read credentials from Render Environment Variables
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GMAIL_ADDRESS = os.getenv("GMAIL_ADDRESS", "")
+GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 
 @st.cache_resource
 def get_gemini_client():
