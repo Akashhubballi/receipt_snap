@@ -6,7 +6,7 @@ from prompts import SYSTEM_PROMPT, WELCOME_MESSAGE_TEMPLATE, SUMMARY_REQUEST_PRO
 from mailer import send_email
 from telegram_bot import send_telegram
 
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3.8-flash"
 
 st.set_page_config(page_title="ReceiptSnap - AI Bill Splitter", page_icon="🧾", layout="wide")
 
